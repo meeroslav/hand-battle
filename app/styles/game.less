@@ -1,0 +1,176 @@
+@import '_mixin';
+@import '_animations';
+
+.flashing {
+	.animation(flashing, 1000ms, 0, linear, infinite);
+}
+.score {
+	margin: -20px auto 0;
+	font-size: 2em;
+	width: 200px;
+	text-align: center;
+
+	i.selected {
+		color: @selected;
+	}
+
+	.board {
+		background: @selected-block;
+		padding: 5px;
+		display: inline-block;
+		.fontBold();
+
+		div {
+			width: 40px;
+			text-align: right;
+			display: inline-block;
+
+			&:last-child {
+				text-align: left;
+			}
+		}
+	}
+}
+#game-box {
+	height: 500px;
+	margin-bottom: 20px;
+	position: relative;
+
+	#notification {
+		color: @selected;
+		position: absolute;
+		top: 50%;
+		opacity: 0.5;
+		width: 100%;
+		text-align: center;
+		font-size: 4em;
+		.fontBold();
+	}
+
+	#gestures {
+		position: absolute;
+		width: 12em;
+		height: 12em;
+		top: 50%;
+		left: 50%;
+		margin-left: -6em;
+		margin-top: -6em;
+		.animate();
+
+		div {
+			font-size: 8em;
+			width: 1em;
+			height: 1em;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -0.5em;
+			margin-top: -0.5em;
+			.transformOrigin(50%, 50%);
+
+			i {
+				position: absolute;
+				width: 1em;
+				height: 1em;
+
+				&.selected {
+					color: @selected;
+				}
+			}
+		}
+
+		&.result {
+			.moveBy(-16em);
+			&.rotate-0-3 { .rotate(0, 3, -16em); }
+			&.rotate-1-3 { .rotate(1, 3, -16em, 1); }
+			&.rotate-2-3 { .rotate(2, 3, -16em, 1); }
+			&.rotate-3-3 { .rotate(3, 3, -16em); }
+			&.rotate-0-5 { .rotate(0, 5, -16em); }
+			&.rotate-1-5 { .rotate(1, 5, -16em, 1); }
+			&.rotate-2-5 { .rotate(2, 5, -16em, 1); }
+			&.rotate-3-5 { .rotate(3, 5, -16em, 1); }
+			&.rotate-4-5 { .rotate(4, 5, -16em, 1); }
+			&.rotate-5-5 { .rotate(5, 5, -16em); }
+		}
+	}
+
+	.rotate-0-3 { .rotate(0, 3); }
+	.rotate-1-3 { .rotate(1, 3, 0, 1); }
+	.rotate-2-3 { .rotate(2, 3, 0, 1); }
+	.rotate-3-3 { .rotate(3, 3); }
+	.rotate-0-5 { .rotate(0, 5); }
+	.rotate-1-5 { .rotate(1, 5, 0, 1); }
+	.rotate-2-5 { .rotate(2, 5, 0, 1); }
+	.rotate-3-5 { .rotate(3, 5, 0, 1); }
+	.rotate-4-5 { .rotate(4, 5, 0, 1); }
+	.rotate-5-5 { .rotate(5, 5); }
+
+	#go, #result {
+		background: @header-back;
+		font-size: 3em;
+		.fontBold();
+		width: 2em;
+		height: 2em;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -1em;
+		margin-top: -1em;
+		-moz-border-radius: 1em;
+		-webkit-border-radius: 1em;
+		-khtml-border-radius: 1em;
+		border-radius: 1em;
+	}
+
+	#computer-right, #computer-left {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -0.5em;
+		font-size: 8em;
+		width: 1em;
+		height: 1em;
+
+		i {
+			float: left;
+		}
+	}
+	#computer-left {
+		.moveBy(-1.5em);
+		//margin-left: -1.5em;
+	}
+	#computer-right {
+		.moveBy(0.5em);
+		.animate();
+		opacity: 0;
+
+		&.result {
+			opacity: 1;
+		}
+	}
+}
+#toolbox {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+
+	& > div {
+		float: left;
+		width: 50%;
+		text-align: right;
+
+		& + div {
+			text-align: left;
+		}
+
+		button {
+			padding: 10px;
+			font-size: 1.5em;
+
+			i {
+				padding-right: 5px;
+			}
+		}
+	}
+}

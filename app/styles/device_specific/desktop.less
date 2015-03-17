@@ -1,0 +1,86 @@
+@import '../_mixin';
+
+@media (min-width: 769px){
+	#header {
+		#menu-button {
+			display: none;
+		}
+
+		& > div {
+			width: 768px;
+			margin: 0 auto;
+
+			& > ul {
+				float: right;
+				display: inline-block;
+				position: relative;
+
+				& > li {
+					display: inline-block;
+					padding: 5px 10px;
+
+					& > i {
+						padding-right: 5px;
+					}
+
+					&#settings {
+						position: absolute;
+						top: 39px;
+						right: 0;
+						width: 220px;
+						background: @header-back;
+						z-index: @z-menu;
+
+						ul {
+							padding-top: 5px;
+
+							li {
+								padding-bottom: 5px;
+
+								i {
+									padding-right: 10px;
+								}
+							}
+
+							&:first-child {
+								padding-top: 0;
+							}
+						}
+
+						& > div {
+							background: @header-back;
+							padding: 5px;
+							margin: 0 -5px;
+							border-bottom: 1px solid @border;
+						}
+					}
+				}
+			}
+		}
+	}
+	#content {
+		width: 100%;
+		margin: 0 -50%;
+		padding: 20px 20px 58px;
+		left: 50%;
+		top: 49px;
+	}
+	#help-games {
+		div span {
+			padding-top: 20px;
+		}
+		i {
+			font-size: 4em;
+		}
+	}
+
+	.help-content,
+	.about {
+		width: 768px;
+		margin: 0 auto;
+	}
+	.help-content {
+		padding-left: 10px;
+	}
+
+}

@@ -1,0 +1,94 @@
+// fonts
+.fontBold() {
+	font-family: 'Roboto-Bold', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.fontLight() {
+	font-family: 'Roboto-Light', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// colors
+@top-gradient: #4495d0;
+@bottom-gradient: #2e9b92;
+@color: #f4faff;
+@selected: #bffd47;
+@header-back: rgba(0, 0, 0, 0.25);
+@border: rgba(255, 255, 255, 0.5);
+@selected-block: rgba(255, 255, 255, 0.5);
+
+#gradient {
+	.vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+		background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // Safari 5.1-6, Chrome 10+
+		background-image: -o-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // Opera 12
+		background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+		background-repeat: repeat-x;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color), argb(@end-color))); // IE9 and down
+	}
+}
+
+// depths
+@z-topmost: 999;
+@z-menu: 10;
+@z-header: 2;
+
+// text manipulation
+.text-overflow() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// rotation transforms
+.transformOrigin(@x: 100%, @y: 100%) {
+	-o-transform-origin: @x @y;
+	-moz-transform-origin: @x @y;
+	-webkit-transform-origin: @x @y;
+	-ms-transform-origin: @x @y;
+	transform-origin: @x @y;
+}
+
+.boxSizing(){
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.rotate(@index: 0, @count: 1, @x: 0, @reverse: 0) {
+	@rotation: 360deg/@count*@index;
+
+	-ms-transform: translateX(@x) rotate(@rotation);
+	-o-transform: translateX(@x) rotate(@rotation);
+	-webkit-transform: translateX(@x) rotate(@rotation);
+	-moz-transform: translateX(@x) rotate(@rotation);
+	transform: translateX(@x) rotate(@rotation);
+
+	& > i {
+		-ms-transform: translateX(1em) rotate(-@rotation);
+		-webkit-transform: translateX(1em) rotate(-@rotation);
+		-o-transform: translateX(1em) rotate(-@rotation);
+		-moz-transform: translateX(1em) rotate(-@rotation);
+		transform: translateX(1em) rotate(-@rotation);
+	}
+
+	@reverse_rotation: @reverse * -@rotation;
+	& > div i i {
+		-ms-transform: rotate(@reverse_rotation);
+		-webkit-transform: rotate(@reverse_rotation);
+		-o-transform: rotate(@reverse_rotation);
+		-moz-transform: rotate(@reverse_rotation);
+		transform: rotate(@reverse_rotation);
+	}
+}
+
+.moveBy(@x: 0) {
+	-o-transform: translateX(@x);
+	-ms-transform: translateX(@x);
+	-webkit-transform: translateX(@x);
+	-moz-transform: translateX(@x);
+	transform: translateX(@x);
+}
+

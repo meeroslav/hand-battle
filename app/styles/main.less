@@ -1,0 +1,79 @@
+@import '_mixin';
+@import '_animations';
+
+// normalization styles
+a {
+	color: inherit
+}
+ul {
+	padding: 0;
+	margin: 0;
+}
+li {
+	list-style: none;
+	padding: 0
+}
+* {
+	.boxSizing();
+}
+strong, b, h1, h2, h3 {
+	font-family:'Roboto-Bold';
+	margin: 0;
+	font-weight:normal
+}
+*[onclick], button {
+	cursor: pointer;
+}
+button {
+	background: none;
+	border: none;
+	color: inherit;
+	font-family: inherit;
+	padding: 0;
+	outline: none;
+}
+
+// general page
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	color: @color;
+	#gradient > .vertical(@top-gradient, @bottom-gradient, 0, 100%);
+	font-family: 'Roboto-Light', sans-serif;
+	line-height: 1.231;
+	overflow: hidden;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.hidden {
+	display: none !important;
+}
+
+#content {
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+}
+
+// loading animation
+#loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: @z-topmost;
+
+	span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -0.5em;
+		font-size: 5em;
+		.animation(rotation, 2s, 0, linear, infinite);
+	}
+}

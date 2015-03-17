@@ -1,0 +1,108 @@
+@import '../_mixin';
+@import '../_animations';
+
+@media (max-width: 768px){
+	#main {
+		position: relative;
+		height: 100%;
+		.animate();
+	}
+
+	#header {
+		padding: 0;
+
+		#menu-button {
+			font-size: 2em;
+			padding: 5px;
+			display: inline-block;
+		}
+
+		h1{
+			float: left;
+		}
+
+		& > div {
+			display: inline-block;
+		}
+
+		ul#menu {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 250px;
+			bottom: 0;
+			padding: 5px;
+			background: @header-back;
+			z-index: @z-menu;
+			.moveBy(-250px);
+
+			#settings {
+				display: block !important;
+			}
+
+			li {
+				padding: 5px;
+			}
+
+			& > li:not(.menu-heading):not(#settings) {
+				padding-left: 30px;
+			}
+
+			i {
+				padding-right: 5px;
+			}
+
+			.menu-heading {
+				background: @header-back;
+				padding: 5px;
+				margin: 10px -5px 5px;
+				border-bottom: 1px solid @border;
+			}
+		}
+	}
+	#content {
+		margin: 0 auto;
+		padding: 10px 10px 58px;
+		left: 0;
+		right: 0;
+		top: 42px;
+
+		.score {
+			margin: -10px auto 0;
+			font-size: 1.5em;
+
+			.board div {
+				width: 30px;
+			}
+		}
+
+		#game-box {
+			height: 100%;
+			margin: -10px 0 -10px -10px;
+			font-size: 0.75em;
+
+			#computer-right {
+				.animate();
+				.moveBy(2em);
+
+				&.result {
+					.moveBy(0.5em);
+				}
+			}
+		}
+	}
+
+	#main.menu-on {
+		.moveBy(250px);
+	}
+
+	.about {
+		margin: 0 -10px;
+	}
+}
+
+@media (max-height: 480px){
+	#content #game-box {
+		font-size: 0.6em;
+	}
+}

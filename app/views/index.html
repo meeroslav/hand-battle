@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title m-bind="Translation.title"></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href=images/ios_57px.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/ios_72px.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/ios_114px.png">
+	<link rel="shortcut icon" sizes="196x196" href="images/and_196px.png">
+	<link rel="shortcut icon" sizes="128x128" href="images/and_128px.png">
+	<meta name="apple-mobile-web-app-title" content="Hand Battle">
+	<!-- inject:css -->
+	<!-- endinject -->
+</head>
+<body>
+<div id="loading" m-class="hidden:Scope.loaded==true">
+	<span class="icon-loader"></span>
+</div>
+<div id="main" class="hidden" m-class="hidden:Scope.loaded!=true;menu-on:Scope.menuVisible==true">
+	<div id="header">
+		<div id="menu-button" onclick="MainCtrl.toggleMenu()" class="icon-menu"></div>
+		<div>
+			<h1 m-bind="Translation.title"></h1>
+
+			<ul id="menu">
+				<li onclick="MainCtrl.toggleMenu(); GameCtrl.init()" m-bind="Translation.game"></li>
+				<li onclick="MainCtrl.toggleMenu(); HelpCtrl.init()" m-bind="Translation.help"></li>
+				<li onclick="MainCtrl.toggleSettings()" class="menu-heading"><i class="icon-config"></i><span m-bind="Translation.settings"></span></li>
+				<li id="settings" class="hidden" m-class="hidden:Scope.settingsVisible==false">
+					<ul id="languages"></ul>
+					<div class="menu-heading" m-bind="Translation.gameType"></div>
+					<ul id="games"></ul>
+					<div class="menu-heading" m-bind="Translation.mode"></div>
+					<ul id="modes"></ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="content" onclick="MainCtrl.toggleSettings(false)">
+	</div>
+</div>
+<!-- inject:template -->
+<!-- endinject -->
+<!-- inject:js -->
+<!-- endinject -->
+</body>
+</html>

@@ -1,0 +1,26 @@
+<div class="score">
+	<i m-class="icon-human:Scope.mode==human;icon-computer:Scope.mode==computer;selected flashing:Scope.result==-1" id="player1"></i>
+	<div class="board">
+		<div m-bind="Scope.player1.score"></div>
+		:
+		<div m-bind="Scope.player2.score"></div>
+	</div>
+	<i class="icon-computer" id="player2" m-class="selected flashing:Scope.result==1"></i>
+</div>
+<div id="game-box">
+	<div id="notification" m-class="hidden:Scope.resulted==false"></div>
+	<div id="computer-left"></div>
+	<div id="gestures" m-class="result:Scope.resulted==true"></div>
+	<button id="go" m-bind="Translation.go" onclick="GameCtrl.go()" m-class="hidden:Scope.showGo==false"></button>
+	<button id="result" onclick="GameCtrl.toggleGame()" m-class="hidden:Scope.resulted==false"></button>
+	<div id="computer-right" m-class="result:Scope.resulted==true"></div>
+</div>
+<div id="toolbox">
+	<div>
+		<button onclick="GameCtrl.stop()"><i class="icon-stop"></i><span m-bind="Translation.stop"></span></button>
+	</div>
+	<div>
+		<button id="play" m-class="hidden:Scope.started==true" onclick="GameCtrl.toggleGame(true)"><i class="icon-play"></i><span m-bind="Translation.start"></span></button>
+		<button id="pause" m-class="hidden:Scope.started!=true" onclick="GameCtrl.toggleGame(false)"><i class="icon-pause"></i><span m-bind="Translation.pause"></span></button>
+	</div>
+</div>
