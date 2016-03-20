@@ -2,9 +2,9 @@
  * Created by Miro on 17.11.2014.
  */
 
-var less = require('gulp-bundle-assets/node_modules/gulp-less'),
-    lazyPipe = require('gulp-bundle-assets/node_modules/lazypipe'),
-    gif = require('gulp-bundle-assets/node_modules/gulp-if');
+var less = require('gulp-less'),
+    lazyPipe = require('lazypipe'),
+    gif = require('gulp-if');
 
 function stringEndsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
